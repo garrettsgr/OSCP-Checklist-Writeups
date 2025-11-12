@@ -45,7 +45,6 @@ The /manager/html endpoint on the Apache Tomcat web server reveals credentials a
 
 ## 3. Recon
 
-#### nmap
 `nmap -p- -vv -oN scans/nmap 10.129.10.201`
 
 <img width="527" height="116" alt="image" src="https://github.com/user-attachments/assets/44f1e4ae-6f3c-4791-8224-ca5e8b9c63fe" />
