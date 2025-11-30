@@ -34,7 +34,9 @@ A custom X-Backend-Server reveals the server handling requests. After visiting t
 
 #### Rules
 **Permitted Testing**: Recon, Exploitation, Post-Exploitation of the Paper (10.129.136.31) machine. 
+
 **Non-Permitted Testing**: Hack the Box infrastructure, other players, any security testing outside of the Hack the Box platform while connected to their network.
+
 **Disclosure**: This write up contains a full walkthrough. However, flags, file contents, and credentials will not be included unless otherwise provided from the start. I highly encourage individuals to try on their own and use this guide as a last resort. Hack the Box takes their platform seriously and I will uphold their terms of service and guidelines, which can be found here https://help.hackthebox.com/en/articles/5188925-streaming-writeups-walkthrough-guidelines. 
 
 ---
