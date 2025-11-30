@@ -1,5 +1,5 @@
 # Paper
-**Author:** Garrett Segura
+**Author:** Garrett Segura (@grehaus)
 
 **Date:** 11/29/2025
 
@@ -40,53 +40,68 @@ A custom X-Backend-Server reveals the server handling requests. After visiting t
 ---
 
 ## 3. Recon
-![[Pasted image 20251129124829.png]]
+<img width="336" height="79" alt="image" src="https://github.com/user-attachments/assets/56b5ccfd-594c-4464-9e74-d8b960392158" />
+
 Initial scan shows ssh and http/https services running on the machine. 
 
+----
 
-![[Pasted image 20251129124942.png]]
+<img width="522" height="187" alt="image" src="https://github.com/user-attachments/assets/203b704d-ac78-464c-b718-3b85864a5ebc" />
+
 The "office.paper" server is shown in the X-Backend-Server header, this is added to the hosts file.
 
+---
 
-![[Pasted image 20251129125249.png]]
+<img width="441" height="23" alt="image" src="https://github.com/user-attachments/assets/7280ede3-28b7-4023-87e3-e786cadde528" />
+
 Now navigating to `http://office.paper` we can see at the bottom of the page the site is using WordPress.
 
 ---
 ## 4. Enumeration
 
-![[Pasted image 20251129125949.png]]
+<img width="957" height="75" alt="image" src="https://github.com/user-attachments/assets/a9634be7-0a5a-4774-b3eb-cd971fdd5a36" />
+
 Using wpscan shows an outdated version, vulnerable to `CVE-2019-17671`
  - https://www.exploit-db.com/exploits/47690
+---
 
+<img width="1630" height="205" alt="image" src="https://github.com/user-attachments/assets/5a255b63-82fd-4077-9aca-9c87abbd5433" />
 
-![[Pasted image 20251129130411.png]]
 Using the CVE reveals an employee chat system.
 
+---
 
-![[Pasted image 20251129130839.png]]
+<img width="818" height="219" alt="image" src="https://github.com/user-attachments/assets/faa6027b-59ba-4984-b7f1-6a29bd70a34d" />
+
 After adding `chat.office.paper` to the hosts file, navigating to the link, creating a user, and looking through the message history, I stumbled upon a bot that can interact with commands.
 
+---
 
-![[Pasted image 20251129131042.png]]
-Testing the bot, we can see that it is indeed performing a long listing on the `sales` directory. However, the bot is not as secure as it mentions to be. We can escape the `sales` directory by a series of `../` . The bot also mentions reading files, which after poking around I found an environment file in the `hubot` directory.
+<img width="402" height="296" alt="image" src="https://github.com/user-attachments/assets/d04fed36-f9c6-4408-b46f-11182864eef4" />
+
+Testing the bot, we can see that it is indeed performing a long listing on the `sales` directory. However, the bot is not as secure as it mentions to be. We can escape the `sales` directory by a series of `../` . The bot also mentions reading files, which after digging around I found an environment file in the `hubot` directory.
 
 
-![[Pasted image 20251129131557.png]]
 We know there is a user `dwight`, this is the perfect time to try using known credentials with the previously found ssh service.
 
 ---
 
 ## 5. Initial Accesss
 
-![[Pasted image 20251129131829.png]]
+<img width="484" height="59" alt="image" src="https://github.com/user-attachments/assets/3e3def27-e98c-4e76-af17-463dadfbdd93" />
+
 The found credentials lands us with shell access as `dwight`. 
 
+---
 
-![[Pasted image 20251129132139.png]]
+<img width="673" height="149" alt="image" src="https://github.com/user-attachments/assets/00ce5d4c-9c1c-4141-9e4d-52c9f952f7f4" />
+
 Setting up a Python3 server to retrieve the `linpeas.sh` file to run automatic enumeration.
 
+---
 
-![[Pasted image 20251129133228.png]]
+<img width="1320" height="214" alt="image" src="https://github.com/user-attachments/assets/7c61b190-dfef-43ed-86e0-bb77377000be" />
+
 There are a few interesting findings from linpeas, however, CVE-2021-3560 stands out. 
 
 ---
@@ -94,9 +109,10 @@ There are a few interesting findings from linpeas, however, CVE-2021-3560 stands
 CVE-2021-3560 can be used to effectively create our own root user.
 - https://github.com/secnigma/CVE-2021-3560-Polkit-Privilege-Esclation/blob/main/poc.sh
 
+---
 
+<img width="765" height="630" alt="image" src="https://github.com/user-attachments/assets/85571d17-443c-489d-bf9b-5966743e8ea1" />
 
-![[Pasted image 20251129134019.png]]
 This is a time based attack against the dbus messaging, so it may take a few runs to properly execute. 
 
 ---
