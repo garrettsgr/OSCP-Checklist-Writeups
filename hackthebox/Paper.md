@@ -23,7 +23,7 @@
 ---
 
 ## 1. Report Summary
-A custom X-Backend-Server reveals the server handling requests. After visiting the new found site, the bottom of the page shows that the WordPress CMS is being used for the site. The version is outdated and vulnerable to `CVE-2019-17671`, which upon using reveals a chatbot for employees. The chatbot is not secure and can be exploited to retrieve credentials from hidden files. Once an unauthorized user gains access from the leaked credentials, the outdated polkit service can be exploited to create a root level user and compromise the system.
+A custom X-Backend-Server reveals the server handling requests. After visiting the new found site, the bottom of the page shows that the WordPress CMS is being used for the site. The version is outdated and vulnerable to CVE-2019-17671, which upon using reveals a chatbot for employees. The chatbot is not secure and can be exploited to retrieve credentials from hidden files. Once an unauthorized user gains access from the leaked credentials, the outdated polkit service can be exploited to create a root level user and compromise the system.
 
 ---
 
