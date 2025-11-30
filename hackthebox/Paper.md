@@ -7,7 +7,7 @@
 
 **OS:**  Linux
 
-**Summary**: An outdated WordPress version allows an unauthorized parties to leak information from secret content, exposing a chatbot for employees. The chat bot is vulnerable to reading files outside the set location, which reveals user credentials. Gaining access to the machine and running automated scripts locates the polkit version is out of date and can be exploited with public scripts.
+**Summary**: An outdated WordPress version allows an unauthorized parties to leak information from secret content, exposing a chatbot for employees. The chat bot is misconfigured allowing files to be read outside the sales directory, which reveals user credentials. Gaining access to the machine and running automated enumeration identifies the polkit version is out of date and can be exploited with public scripts.
 
 ---
 
